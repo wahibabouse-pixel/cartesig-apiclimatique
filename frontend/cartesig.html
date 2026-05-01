@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خريطة SIG الفلاحية – الجزائر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="cartesig.css">
+
+</head>
+<body>
+<button id="lang-btn" title="تبديل اللغة / Changer la langue">
+  <span class="lb-flag">🌐</span>
+  <span id="lb-cur">ar</span>
+  <span class="lb-sep">|</span>
+  <span id="lb-alt">Fr</span>
+</button>
+
+<div id="loader"><div class="ring"></div><p id="lmsg">جارٍ تحميل الخريطة...</p></div>
+<div id="map"></div>
+<button id="fab" title="بحث">🔍</button>
+
+<div id="panel">
+  <div class="ph">
+    <h3 data-i18n="panel_title">🗺️ البحث الجغرافي</h3>
+    <button class="pc-btn" id="pc-btn">✕</button>
+  </div>
+  <div class="pb">
+    <div class="sg">
+      <label data-i18n="lbl_wilaya">📍 الولاية</label>
+      <div class="acw">
+        <input type="text" id="wi" class="aci" data-i18n-ph="ph_wilaya" placeholder="اكتب اسم الولاية..." autocomplete="off">
+        <span class="aca">▼</span>
+        <div id="wl" class="acl"></div>
+      </div>
+    </div>
+    <div class="sg">
+      <label data-i18n="lbl_commune">🏘️ البلدية</label>
+      <div class="acw">
+        <input type="text" id="ci" class="aci" data-i18n-ph="ph_commune_init" placeholder="اختر ولاية أولاً..." disabled autocomplete="off">
+        <span class="aca">▼</span>
+        <div id="cl" class="acl"></div>
+      </div>
+    </div>
+    <button id="reset-btn" data-i18n="btn_reset">↺ إعادة تعيين</button>
+  </div>
+</div>
+
+<div id="wxbar" class="hidden">
+  <span class="wbi" id="wbi">🌡️</span>
+  <div class="wbn">
+    <div class="wbloc" id="wbloc">—</div>
+    <div class="wbd" id="wbd"><span class="wbld" data-i18n="wx_loading">جارٍ تحميل الطقس...</span></div>
+  </div>
+</div>
+
+<div id="countbadge"><span>🌾</span><span id="ctxt">0 مستثمرة</span></div>
+<div id="status"><div class="dot"></div><span id="stxt" data-i18n="status_default">الجزائر – الخريطة الفلاحية</span></div>
+
+<div id="legend">
+  <h4 data-i18n="legend_title">🌿 مفتاح الخريطة</h4>
+  <div class="li"><div class="ld" style="background:#2d7a4a"></div><span data-i18n="legend_farm">مستثمرة فلاحية</span></div>
+  <div class="li"><div class="ld" style="background:#d4af37"></div><span data-i18n="legend_wilaya">حدود الولاية</span></div>
+  <div class="li"><div class="ld" style="background:#8b4513"></div><span data-i18n="legend_commune">حدود البلدية</span></div>
+</div>
+
+<div id="toast"></div>
+
+<div id="drawer">
+  <button id="drawer-close">✕</button>
+  <div class="dr-title" id="drawer-title" data-i18n="drawer_title">تفاصيل المستثمرة</div>
+  <div id="drawer-body"></div>
+</div>
+
+<script src="cartesig.js">
+
+</script>
+
+</body>
+</html>
