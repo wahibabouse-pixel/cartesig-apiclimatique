@@ -8,10 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<link rel="stylesheet" href="cartesig.css">
-
+<link rel="stylesheet" href="care2.css">
 </head>
 <body>
+
+<!-- زر تبديل اللغة -->
 <button id="lang-btn" title="تبديل اللغة / Changer la langue">
   <span class="lb-flag">🌐</span>
   <span id="lb-cur">ar</span>
@@ -23,32 +24,54 @@
 <div id="map"></div>
 <button id="fab" title="بحث">🔍</button>
 
+<!-- ─── PANEL ─── -->
 <div id="panel">
   <div class="ph">
     <h3 data-i18n="panel_title">🗺️ البحث الجغرافي</h3>
     <button class="pc-btn" id="pc-btn">✕</button>
   </div>
-  <div class="pb">
-    <div class="sg">
-      <label data-i18n="lbl_wilaya">📍 الولاية</label>
-      <div class="acw">
-        <input type="text" id="wi" class="aci" data-i18n-ph="ph_wilaya" placeholder="اكتب اسم الولاية..." autocomplete="off">
-        <span class="aca">▼</span>
-        <div id="wl" class="acl"></div>
+
+  <!-- القسم العلوي: ولاية + بلدية -->
+  <div id="panel-scroll">
+    <div class="pb">
+      <div class="sg">
+        <label data-i18n="lbl_wilaya">📍 الولاية</label>
+        <div class="acw">
+          <input type="text" id="wi" class="aci" data-i18n-ph="ph_wilaya" placeholder="اكتب اسم الولاية..." autocomplete="off">
+          <span class="aca">▼</span>
+          <div id="wl" class="acl"></div>
+        </div>
+      </div>
+      <div class="sg">
+        <label data-i18n="lbl_commune">🏘️ البلدية</label>
+        <div class="acw">
+          <input type="text" id="ci" class="aci" data-i18n-ph="ph_commune_init" placeholder="اختر ولاية أولاً..." disabled autocomplete="off">
+          <span class="aca">▼</span>
+          <div id="cl" class="acl"></div>
+        </div>
+      </div>
+      <button id="reset-btn" data-i18n="btn_reset">↺ إعادة تعيين</button>
+    </div>
+
+    <!-- ─── قسم المستثمرات ─── -->
+    <div id="farms-section">
+      <div class="fs-header">
+        <span class="fs-title" data-i18n="fs_title">🌾 المستثمرات</span>
+        <span class="fs-count" id="fs-count">0</span>
+      </div>
+      <div class="fs-search-wrap">
+        <span class="fs-search-icon">🔍</span>
+        <input type="text" id="fs-search" class="fs-search" data-i18n-ph="fs_search_ph" placeholder="البحث في المستثمرات..." autocomplete="off">
+      </div>
+      <div class="fs-list" id="fs-list">
+        <div class="fs-empty" data-i18n="fs_empty">لا توجد مستثمرات</div>
       </div>
     </div>
-    <div class="sg">
-      <label data-i18n="lbl_commune">🏘️ البلدية</label>
-      <div class="acw">
-        <input type="text" id="ci" class="aci" data-i18n-ph="ph_commune_init" placeholder="اختر ولاية أولاً..." disabled autocomplete="off">
-        <span class="aca">▼</span>
-        <div id="cl" class="acl"></div>
-      </div>
-    </div>
-    <button id="reset-btn" data-i18n="btn_reset">↺ إعادة تعيين</button>
-  </div>
+
+  </div><!-- /panel-scroll -->
 </div>
 
+<!-- WEATHER BAR -->
 <div id="wxbar" class="hidden">
   <span class="wbi" id="wbi">🌡️</span>
   <div class="wbn">
@@ -75,9 +98,7 @@
   <div id="drawer-body"></div>
 </div>
 
-<script src="cartesig.js">
-
+<script src="care2.js"> 
 </script>
-
 </body>
 </html>
