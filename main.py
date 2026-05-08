@@ -28,8 +28,8 @@ app.add_middleware(
 # ─────────────────────────────────────────────
 DB_DSN = (
     f"postgresql://{os.getenv('DB_USER','postgres')}:"
-    f"{os.getenv('DB_PASS','1234567')}@"
-    f"{os.getenv('DB_HOST','192.168.1.6')}:"
+    f"{os.getenv('DB_PASS','password')}@"
+    f"{os.getenv('DB_HOST','localhost')}:"
     f"{os.getenv('DB_PORT','5432')}/"
     f"{os.getenv('DB_NAME','agriculture_db')}"
 )
@@ -656,7 +656,7 @@ async def health():
         raise HTTPException(503, f"DB non disponible: {e}")
     
         
-if __name__ == "__GR__":
+if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0", port=8000)
 
